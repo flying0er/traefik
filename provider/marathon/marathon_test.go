@@ -409,7 +409,7 @@ func TestMarathonTaskFilter(t *testing.T) {
 			provider := &Provider{}
 			actual := provider.taskFilter(c.task, c.application)
 			if actual != c.expected {
-				t.Fatalf("actual %v, expected %v", actual, c.expected)
+				t.Errorf("actual %v, expected %v", actual, c.expected)
 			}
 		})
 	}
@@ -463,7 +463,7 @@ func TestMarathonApplicationFilterConstraints(t *testing.T) {
 			provider.Constraints = types.Constraints{constraint}
 			actual := provider.applicationFilter(c.application)
 			if actual != c.expected {
-				t.Fatalf("got %v, expected %v", actual, c.expected)
+				t.Errorf("got %v, expected %v", actual, c.expected)
 			}
 		})
 	}
@@ -657,7 +657,7 @@ func TestMarathonGetWeight(t *testing.T) {
 			provider := &Provider{}
 			actual := provider.getWeight(c.application)
 			if actual != c.expected {
-				t.Fatalf("actual %q, expected %q", actual, c.expected)
+				t.Errorf("actual %q, expected %q", actual, c.expected)
 			}
 		})
 	}
@@ -692,7 +692,7 @@ func TestMarathonGetDomain(t *testing.T) {
 			}
 			actual := provider.getDomain(c.application)
 			if actual != c.expected {
-				t.Fatalf("actual %q, expected %q", actual, c.expected)
+				t.Errorf("actual %q, expected %q", actual, c.expected)
 			}
 		})
 	}
@@ -791,7 +791,7 @@ func TestMarathonGetPassHostHeader(t *testing.T) {
 			provider := &Provider{}
 			actual := provider.getPassHostHeader(c.application)
 			if actual != c.expected {
-				t.Fatalf("actual %q, expected %q", actual, c.expected)
+				t.Errorf("actual %q, expected %q", actual, c.expected)
 			}
 		})
 	}
@@ -831,7 +831,7 @@ func TestMarathonMaxConnAmount(t *testing.T) {
 			provider := &Provider{}
 			actual := provider.getMaxConnAmount(c.application)
 			if actual != c.expected {
-				t.Fatalf("actual %d, expected %d", actual, c.expected)
+				t.Errorf("actual %d, expected %d", actual, c.expected)
 			}
 		})
 	}
@@ -864,7 +864,7 @@ func TestMarathonGetMaxConnExtractorFunc(t *testing.T) {
 			provider := &Provider{}
 			actual := provider.getMaxConnExtractorFunc(c.application)
 			if actual != c.expected {
-				t.Fatalf("actual %q, expected %q", actual, c.expected)
+				t.Errorf("actual %q, expected %q", actual, c.expected)
 			}
 		})
 	}
@@ -897,7 +897,7 @@ func TestMarathonGetLoadBalancerMethod(t *testing.T) {
 			provider := &Provider{}
 			actual := provider.getLoadBalancerMethod(c.application)
 			if actual != c.expected {
-				t.Fatalf("actual %q, expected %q", actual, c.expected)
+				t.Errorf("actual %q, expected %q", actual, c.expected)
 			}
 		})
 	}
@@ -930,7 +930,7 @@ func TestMarathonGetCircuitBreakerExpression(t *testing.T) {
 			provider := &Provider{}
 			actual := provider.getCircuitBreakerExpression(c.application)
 			if actual != c.expected {
-				t.Fatalf("actual %q, expected %q", actual, c.expected)
+				t.Errorf("actual %q, expected %q", actual, c.expected)
 			}
 		})
 	}
@@ -963,7 +963,7 @@ func TestMarathonGetEntryPoints(t *testing.T) {
 			provider := &Provider{}
 			actual := provider.getEntryPoints(c.application)
 			if !reflect.DeepEqual(actual, c.expected) {
-				t.Fatalf("actual %#v, expected %#v", actual, c.expected)
+				t.Errorf("actual %#v, expected %#v", actual, c.expected)
 			}
 		})
 	}
@@ -1023,7 +1023,7 @@ func TestMarathonGetFrontendRule(t *testing.T) {
 			}
 			actual := provider.getFrontendRule(c.application)
 			if actual != c.expected {
-				t.Fatalf("actual %q, expected %q", actual, c.expected)
+				t.Errorf("actual %q, expected %q", actual, c.expected)
 			}
 		})
 	}
@@ -1056,7 +1056,7 @@ func TestMarathonGetBackend(t *testing.T) {
 			provider := &Provider{}
 			actual := provider.getBackend(c.application)
 			if actual != c.expected {
-				t.Fatalf("actual %q, expected %q", actual, c.expected)
+				t.Errorf("actual %q, expected %q", actual, c.expected)
 			}
 		})
 	}
