@@ -1136,17 +1136,16 @@ func TestMarathonHasHealthCheckLabels(t *testing.T) {
 func TestMarathonGetHealthCheckPath(t *testing.T) {
 	cases := []struct {
 		desc     string
-		value    *string
+		value    string
 		expected string
 	}{
 		{
 			desc:     "label missing",
-			value:    nil,
 			expected: "",
 		},
 		{
 			desc:     "path existing",
-			value:    stringp("/path"),
+			value:    "/path",
 			expected: "/path",
 		},
 	}
@@ -1156,8 +1155,8 @@ func TestMarathonGetHealthCheckPath(t *testing.T) {
 		t.Run(c.desc, func(t *testing.T) {
 			t.Parallel()
 			app := application()
-			if c.value != nil {
-				app.AddLabel(types.LabelBackendHealthcheckPath, *c.value)
+			if c.value != "" {
+				app.AddLabel(types.LabelBackendHealthcheckPath, c.value)
 			}
 			provider := &Provider{}
 			actual := provider.getHealthCheckPath(app)
@@ -1171,17 +1170,16 @@ func TestMarathonGetHealthCheckPath(t *testing.T) {
 func TestMarathonGetHealthCheckInterval(t *testing.T) {
 	cases := []struct {
 		desc     string
-		value    *string
+		value    string
 		expected string
 	}{
 		{
 			desc:     "label missing",
-			value:    nil,
 			expected: "",
 		},
 		{
 			desc:     "interval existing",
-			value:    stringp("5m"),
+			value:    "5m",
 			expected: "5m",
 		},
 	}
@@ -1191,8 +1189,8 @@ func TestMarathonGetHealthCheckInterval(t *testing.T) {
 		t.Run(c.desc, func(t *testing.T) {
 			t.Parallel()
 			app := application()
-			if c.value != nil {
-				app.AddLabel(types.LabelBackendHealthcheckInterval, *c.value)
+			if c.value != "" {
+				app.AddLabel(types.LabelBackendHealthcheckInterval, c.value)
 			}
 			provider := &Provider{}
 			actual := provider.getHealthCheckInterval(app)
