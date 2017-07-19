@@ -4,7 +4,7 @@ import "github.com/gambol99/go-marathon"
 
 // Functions related to building applications.
 
-func application(ops ...func(*marathon.Application)) marathon.Application {
+func createApplication(ops ...func(*marathon.Application)) marathon.Application {
 	app := marathon.Application{}
 	app.EmptyLabels()
 
@@ -65,7 +65,7 @@ func ipAddrPerTask(port int) func(*marathon.Application) {
 
 // Functions related to building tasks.
 
-func task(ops ...func(*marathon.Task)) marathon.Task {
+func createTask(ops ...func(*marathon.Task)) marathon.Task {
 	t := marathon.Task{
 		// The vast majority of tests expect the task state to be TASK_RUNNING.
 		State: string(taskStateRunning),
@@ -78,8 +78,8 @@ func task(ops ...func(*marathon.Task)) marathon.Task {
 	return t
 }
 
-func localhostTask(ops ...func(*marathon.Task)) marathon.Task {
-	t := task(
+func createLocalhostTask(ops ...func(*marathon.Task)) marathon.Task {
+	t := createTask(
 		host("localhost"),
 		ipAddresses("127.0.0.1"),
 	)
